@@ -15,34 +15,47 @@
 
         h1 {
             color: #ffcccb;
-            font-size: 32px;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
 
         img.choinka {
             display: block;
-            margin: 0 auto;
-            max-width: 250px;
-            margin-bottom: 20px;
+            margin: 0 auto 30px;
+            max-width: 400px;
         }
 
         .zyczenia {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            white-space: pre-line;
+            font-size: 20px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 50px;
         }
 
-        .czas {
-            font-size: 20px;
-            margin-top: 30px;
+        .czas-wrapper {
+            margin-top: 40px;
+        }
+
+        .zegar-img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        #data {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        #zegar {
+            font-size: 48px;
             font-weight: bold;
         }
 
         .pozdro {
-            font-size: 20px;
+            font-size: 24px;
             color: #90ee90;
             font-weight: bold;
-            margin-top: 30px;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -53,18 +66,11 @@
     <h1>🎄 Wesołych Świąt 🎄</h1>
 
     <div class="zyczenia">
-        Niech pokój zamieszka w sercach ludzi,<br />
-        a nad światem zamilknie świąteczna cisza gwiazd.<br />
-        Anielskie chóry niech grają cicho w tle,<br />
-        a dobro niech płynie z rąk do rąk – jak chleb, którym dzielimy się z bliskimi.
-
-        Niech ten wyjątkowy czas<br />
-        rozświetli każdy dom blaskiem nadziei i miłości.<br />
-        Życzymy pięknych, ciepłych i radosnych<br />
-        Świąt Bożego Narodzenia!
+        Niech pokój zamieszka w sercach ludzi, a nad światem zamilknie świąteczna cisza gwiazd. Anielskie chóry niech grają cicho w tle, a dobro niech płynie z rąk do rąk – jak chleb, którym dzielimy się z bliskimi. Niech ten wyjątkowy czas rozświetli każdy dom blaskiem nadziei i miłości. Życzymy pięknych, ciepłych i radosnych Świąt Bożego Narodzenia!
     </div>
 
-    <div class="czas">
+    <div class="czas-wrapper">
+        <img src="zegar.png" alt="Zegar" class="zegar-img" />
         <div id="data"></div>
         <div id="zegar"></div>
     </div>
@@ -118,11 +124,11 @@
         function aktualizujZegar() {
             const teraz = new Date();
 
-            // Data
+            // Format daty: dzień/miesiąc/rok
             const dzien = String(teraz.getDate()).padStart(2, '0');
             const miesiac = String(teraz.getMonth() + 1).padStart(2, '0');
             const rok = teraz.getFullYear();
-            document.getElementById("data").textContent = `${dzien}.${miesiac}.${rok} r.`;
+            document.getElementById("data").textContent = `${dzien}/${miesiac}/${rok}`;
 
             // Godzina
             const godzina = String(teraz.getHours()).padStart(2, '0');
