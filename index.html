@@ -1,129 +1,119 @@
-
-<html>
-<meta http-equiv="Content-type" content="text/html; charset=windows-1250" />
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-<link rel="Stylesheet" type="text/css" href="style/css3c13.css" />
+    <meta charset="UTF-8" />
+    <title>Wesołych Świąt!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: darkred;
+            font-size: 28px;
+        }
+
+        img {
+            float: right;
+            max-width: 200px;
+            margin-left: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .pozdro {
+            font-size: 20px;
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 40px;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-<!--]>--><script type="text/javascript" src="//smart.idmnet.pl/prebid.js" async="async"></script>
-<script src="//www3.smartadserver.com/config.js?nwid=1057" type="text/javascript"></script>
-<script type="text/javascript" src="//smart.idmnet.pl/62748/smartConfig_489125.js"></script>
-<script type="text/javascript" src="//smart.idmnet.pl/criteoRTA.js"></script>
-<script type="text/javascript" src="//cdn2.pollster.pl/nw.js" ></script>
-<script type="text/javascript" src="//smart.idmnet.pl/currency.js"></script>
-<script type="text/javascript" src="//smart.idmnet.pl/prebidBoilerplate.js"></script>
-<div style="text-align:center;font-size:11px;font-family:arial;background-color:black;color:white">Je&#347;li jeste&#347; w&#322;a&#347;cicielem tej strony, mo&#380;esz wy&#322;&#261;czy&#263; reklam&#281; poni&#380;ej zmieniaj&#261;c pakiet na PRO lub VIP w panelu naszego <a style="color:grey" rel="nofollow" href="https://www.cba.pl/pl/oferta/hosting">hostingu</a> ju&#380; od 4z&#322;!</div>
-<div id="top_1">
-<script>
-	sas_idmnet.relase("top_1");
-</script>
-</div>
+    <img src="choinka.png" alt="obrazek choinki świątecznej" />
 
-<img src="choinka.jpg" alt="obrazek do kartki świątecznej" align="right" />
-<br />
-<h1>WESOŁYCH ŚWIĄT</h1>
-<p>
-  Pokój na ziemi ludziom,<br />
-a w niebie cisza gwiazd,<br />
-grają anieli,<br />
-świat się chlebem dzieli.<br />
-Świat ma dziś świąteczny blask…<br />
-Pięknych i radosnych<br />
-Świąt Bożego Narodzenia!
-</p>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<marquee><p class="pozdro">POZDRAWIAM</p></marquee>
+    <h1>🎄 Wesołych Świąt 🎄</h1>
+    <p>
+        Niech pokój zamieszka w sercach ludzi,<br />
+        a nad światem zamilknie świąteczna cisza gwiazd.<br />
+        Anielskie chóry niech grają cicho w tle,<br />
+        a dobro niech płynie z rąk do rąk – jak chleb, którym dzielimy się z bliskimi.
+    </p>
+    <p>
+        Niech ten wyjątkowy czas<br />
+        rozświetli każdy dom blaskiem nadziei i miłości.<br />
+        Życzymy pięknych, ciepłych i radosnych<br />
+        Świąt Bożego Narodzenia!
+    </p>
 
+    <div class="pozdro">POZDRAWIAM</div>
 
+    <!-- Animacja śniegu -->
+    <script>
+        const snowflakes = [];
 
-<script type="text/javascript">
-var S=[];
+        function initSnow(imageSrc, count) {
+            for (let i = 0; i < count; i++) {
+                const flake = document.createElement('img');
+                flake.src = imageSrc;
+                flake.style.position = 'absolute';
+                flake.style.width = '20px';
+                flake.style.height = '20px';
+                flake.style.zIndex = 1000;
+                flake.style.pointerEvents = 'none';
+                document.body.appendChild(flake);
 
-function init(IM, HM, i) {
-  for (i=0; i<HM; i++) {
-    (S[i]={}).o=document.createElement('img');
-    with (S[i].o) {
-      src=IM;
-      style.position="absolute";
-    }
-    with (Math) {
-      S[i].dx=0;
-      S[i].xp=random()*(document.body.clientWidth-50);
-      S[i].yp=random()*document.body.clientHeight;
-      S[i].am=random()*20;
-      S[i].stx=0.02+random()/10;
-      S[i].sty=0.7+random();
-    }
-    document.body.appendChild(S[i].o);
-  }
-  snow(HM);
-}
+                snowflakes.push({
+                    el: flake,
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    dx: 0,
+                    amp: Math.random() * 20,
+                    stx: 0.02 + Math.random() / 10,
+                    sty: 0.5 + Math.random()
+                });
+            }
 
-function snow(HM, i) {
-  for(i=0; i<HM; i++) {
-    with (S[i]) {
-      yp+=sty;
-      if (yp > document.body.clientHeight-50) {
-        with (Math) {
-          xp=random()*(document.body.clientWidth-am-30);
-          yp=0;
-          stx=0.02+random()/10;
-          sty=0.7+random();
+            animateSnow();
         }
-      }
-      dx+=stx;
-      o.style.top=~~(yp)+"px";
-      o.style.left=~~(xp+am*Math.sin(dx))+"px";
-    }
-  }
-  setTimeout("snow("+HM+")",10);
-}
 
-onload=function() {init('snow2.gif', 80);}
+        function animateSnow() {
+            for (let flake of snowflakes) {
+                flake.y += flake.sty;
+                if (flake.y > window.innerHeight) {
+                    flake.y = 0;
+                    flake.x = Math.random() * window.innerWidth;
+                }
+                flake.dx += flake.stx;
+                flake.el.style.top = `${flake.y}px`;
+                flake.el.style.left = `${flake.x + flake.amp * Math.sin(flake.dx)}px`;
+            }
 
-</script>
-<!--]-->
-<div style="text-align:center;font-size:11px" class="cbalink"><a href="https://www.cba.pl/" title="darmowy hosting">Darmowy Hosting</a> CBA.PL<br/><br/></div>
-<script type="text/javascript" src="//a5.cba.pl/r1.js"></script>
+            requestAnimationFrame(animateSnow);
+        }
 
-<div class="cumf_bt_form_wrapper" style="display:none">
-<form id="contact_us_mail_feedback" action="/oldTi9QvqM6ytokU9Q8ylQq" method="post">
-    <fieldset>
-        <!-- Form Name -->
-        <legend>Contact Us</legend>
-        <!-- Text input-->
-        <div class="cumf_bt_form-group">
-            <label class="col-md-4 cumf_bt_control-label" for="cumf_bt_name">name</label>
-            <div class="col-md-4">
-                <input id="cumf_bt_name" name="cumf_bt_name" type="text" placeholder="your name" class="cumf_bt_form-control cumf_bt_input-md" />
-                <span class="cumf_bt_help-block">Please enter your name</span>
-            </div>
-        </div>
-        <!-- Text input-->
-        <div class="cumf_bt_form-group">
-            <label class="col-md-4 cumf_bt_control-label" for="cumf_bt_email">your email</label>
-            <div class="col-md-4">
-                <input id="cumf_bt_email" name="cumf_bt_email" type="text" placeholder="enter your email" class="cumf_bt_form-control cumf_bt_input-md" />
-                <span class="cumf_bt_help-block">please enter your email</span>
-            </div>
-        </div>
-        <!-- Textarea -->
-        <div class="cumf_bt_form-group">
-            <label class="col-md-4 cumf_bt_control-label" for="cumf_bt_message">your message</label>
-            <div class="col-md-4">
-                <textarea class="cumf_bt_form-control" id="cumf_bt_message" name="cumf_bt_message">Message goes here</textarea>
-            </div>
-        </div>
-        <input type="submit" id="cumf_bt_submit" value="Send"/>
-    </fieldset>
-</form>
-</div>
-<!-- Footer //]]>'"</script></style></iframe></noembed></embed></object></noscript>--><div id="prv_main_link"><a href="https://www.prv.pl" title="darmowy hosting">Darmowy hosting</a> zapewnia PRV.PL</div><script type="text/javascript" src="/prv_site_config_values.js"></script><script type="text/javascript" src="//hosting2.keep.pl/prv_hosting_footer.js"></script></body>
-</html> 
+        window.onload = () => {
+            initSnow('platek-sniegu.png', 50);
+        };
+    </script>
+
+    <div class="footer">
+        Strona świąteczna • Wykonana z miłością 🎅
+    </div>
+</body>
+</html>
