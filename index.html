@@ -8,58 +8,66 @@
             font-family: Arial, sans-serif;
             background-color: #0f1b47;
             color: #ffffff;
-            padding: 20px;
             margin: 0;
+            padding: 20px;
+            text-align: center;
         }
 
         h1 {
             color: #ffcccb;
-            font-size: 28px;
+            font-size: 32px;
         }
 
-        img {
-            float: right;
-            max-width: 200px;
-            margin-left: 20px;
+        img.choinka {
+            display: block;
+            margin: 0 auto;
+            max-width: 250px;
+            margin-bottom: 20px;
         }
 
-        p {
-            line-height: 1.6;
+        .zyczenia {
             font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            white-space: pre-line;
+        }
+
+        .czas {
+            font-size: 20px;
+            margin-top: 30px;
+            font-weight: bold;
         }
 
         .pozdro {
             font-size: 20px;
             color: #90ee90;
             font-weight: bold;
-            text-align: center;
             margin-top: 30px;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            margin-top: 40px;
-            color: #ccc;
         }
     </style>
 </head>
 <body>
-    <img src="chonika.png" alt="obrazek choinki świątecznej" />
+
+    <img src="chonika.png" alt="Obrazek choinki" class="choinka" />
 
     <h1>🎄 Wesołych Świąt 🎄</h1>
-    <p>
+
+    <div class="zyczenia">
         Niech pokój zamieszka w sercach ludzi,<br />
         a nad światem zamilknie świąteczna cisza gwiazd.<br />
         Anielskie chóry niech grają cicho w tle,<br />
         a dobro niech płynie z rąk do rąk – jak chleb, którym dzielimy się z bliskimi.
-    </p>
-    <p>
+
         Niech ten wyjątkowy czas<br />
         rozświetli każdy dom blaskiem nadziei i miłości.<br />
         Życzymy pięknych, ciepłych i radosnych<br />
         Świąt Bożego Narodzenia!
-    </p>
+    </div>
+
+    <div class="czas">
+        <div id="data"></div>
+        <div id="zegar"></div>
+    </div>
 
     <div class="pozdro">POZDRAWIAM</div>
 
@@ -107,13 +115,28 @@
             requestAnimationFrame(animateSnow);
         }
 
+        function aktualizujZegar() {
+            const teraz = new Date();
+
+            // Data
+            const dzien = String(teraz.getDate()).padStart(2, '0');
+            const miesiac = String(teraz.getMonth() + 1).padStart(2, '0');
+            const rok = teraz.getFullYear();
+            document.getElementById("data").textContent = `${dzien}.${miesiac}.${rok} r.`;
+
+            // Godzina
+            const godzina = String(teraz.getHours()).padStart(2, '0');
+            const minuta = String(teraz.getMinutes()).padStart(2, '0');
+            const sekunda = String(teraz.getSeconds()).padStart(2, '0');
+            document.getElementById("zegar").textContent = `${godzina}:${minuta}:${sekunda}`;
+        }
+
         window.onload = () => {
             initSnow('platek-sniegu.PNG', 50);
+            aktualizujZegar();
+            setInterval(aktualizujZegar, 1000);
         };
     </script>
 
-    <div class="footer">
-        Strona świąteczna • Wykonana z miłością 🎅
-    </div>
 </body>
 </html>
